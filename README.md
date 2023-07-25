@@ -19,7 +19,7 @@ Testnet: TBD
 
 ## Audit
 
-The MemeBuddha contract has been audited by [Auditor Name](Audit_Report_Link). No critical issues were found.
+The MemeBuddha contract has been audited by [Cyberscope](https://github.com/mebuvip/mebu/blob/main/audit.pdf). No critical issues were found.
 
 ## Built With OpenZeppelin
 
