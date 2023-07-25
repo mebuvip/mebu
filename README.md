@@ -1,4 +1,4 @@
-# MemeBuddha Token Contract
+# $MEBU Token Contract
 
 ![Audit Status](https://img.shields.io/badge/Audit-Passed-brightgreen)
 
@@ -9,7 +9,6 @@ MemeBuddha is an ERC20 token with unique features:
   - 2% is transferred to a charity wallet.
   - 2% is transferred to a team wallet.
 - **Liquidity Pool Specific**: The fees are only applied when tokens are transferred to specific liquidity pools. The owner of the contract can add or remove these liquidity pools.
-- **Pausable**: The contract owner can pause all token transfers.
 - **Burnable**: Tokens can be burnt, reducing the total supply.
 
 ## Contract Addresses
