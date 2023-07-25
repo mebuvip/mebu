@@ -14,8 +14,7 @@ MemeBuddha is an ERC20 token with unique features:
 
 ## Contract Addresses
 
-Mainnet: TBD  
-Testnet: TBD
+[ETH MAINTENT](https://etherscan.io/address/0x13ef45ed9dd6c4cd3a95a3383373087e3f6250a5)
 
 ## Audit
 
