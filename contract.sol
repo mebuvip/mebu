@@ -9,7 +9,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 /// @custom:security-contact contact@mebu.vip
 contract MemeBuddha is ERC20, ERC20Burnable, Pausable, Ownable {
     address public charityWallet;
-    address public teamWallet;
+    address public communityWallet;
     mapping (address => bool) public liquidityPools;
 
     constructor() ERC20("Meme Buddha", "MEBU") {
@@ -21,9 +21,9 @@ contract MemeBuddha is ERC20, ERC20Burnable, Pausable, Ownable {
         charityWallet = _charityWallet;
     }
 
-    function setTeamWallet(address _teamWallet) public onlyOwner {
-        require(_teamWallet != address(0), "Invalid team wallet address");
-        teamWallet = _teamWallet;
+    function setCommunityWallet(address _communityWallet) public onlyOwner {
+        require(_communityWallet != address(0), "Invalid community wallet address");
+        communityWallet = _communityWallet;
     }
 
     function addLiquidityPool(address _liquidityPool) public onlyOwner {
@@ -52,14 +52,14 @@ contract MemeBuddha is ERC20, ERC20Burnable, Pausable, Ownable {
             require(!paused(), "ERC20Pausable: token transfer while paused");
         }
 
-        if (liquidityPools[to]) {
+        if (liquidityPools[to] && from != charityWallet && from != communityWallet) {
             uint256 fee = amount * 6 / 100;
             uint256 distributeAmount = fee / 3;
             uint256 amountAfterFee = amount - fee;
 
             _burn(from, distributeAmount);
             _transfer(from, charityWallet, distributeAmount);
-            _transfer(from, teamWallet, distributeAmount);
+            _transfer(from, communityWallet, distributeAmount);
 
             // Update the amount being transferred to the liquidity pool
             amount = amountAfterFee;
