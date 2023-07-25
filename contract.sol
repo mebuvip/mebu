@@ -45,8 +45,8 @@ contract MemeBuddha is ERC20, ERC20Burnable, Pausable, Ownable {
     }
 
     function _beforeTokenTransfer(address from, address to, uint256 amount)
-        internal
-        override
+    internal
+    override
     {
         if (from != owner()) {
             require(!paused(), "ERC20Pausable: token transfer while paused");
@@ -59,7 +59,10 @@ contract MemeBuddha is ERC20, ERC20Burnable, Pausable, Ownable {
 
             _burn(from, distributeAmount);
             _transfer(from, charityWallet, distributeAmount);
-            _transfer(from, communityWallet, distributeAmount);
+
+            // Calculate the remaining fee and distribute it to the community wallet
+            uint256 remainingFee = fee - (2 * distributeAmount);
+            _transfer(from, communityWallet, remainingFee);
 
             // Update the amount being transferred to the liquidity pool
             amount = amountAfterFee;
