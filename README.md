@@ -1,17 +1,14 @@
-# $MEBU Token Contract
+# $MEBU Smart Contracts
 
 ![Audit Status](https://img.shields.io/badge/Audit-Passed-brightgreen)
 
 MemeBuddha is an ERC20 token with unique features:
 
-- **6% fee on sells**: A fee is applied to all sell transactions and is distributed as follows:
-  - 2% is burnt, reducing the total supply over time.
-  - 2% is transferred to a charity wallet.
-  - 2% is transferred to a team wallet.
-- **Liquidity Pool Specific**: The fees are only applied when tokens are transferred to specific liquidity pools. The owner of the contract can add or remove these liquidity pools.
-- **Burnable**: Tokens can be burnt, reducing the total supply.
+## Token Contract Addresses
 
-## Contract Addresses
+[ETH MAINTENT](https://etherscan.io/address/0x13ef45ed9dd6c4cd3a95a3383373087e3f6250a5)
+
+## Staking Contract Addresses
 
 [ETH MAINTENT](https://etherscan.io/address/0x13ef45ed9dd6c4cd3a95a3383373087e3f6250a5)
 
