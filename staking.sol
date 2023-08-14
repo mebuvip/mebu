@@ -14,6 +14,8 @@ contract Staking is ReentrancyGuard, Ownable {
     uint256 public s_totalSupply;
     uint256 public s_rewardPerTokenStored;
     uint256 public s_lastUpdateTime;
+    uint256 public s_totalRewardsDistributed;
+    uint256 public s_stakingStartTime = block.timestamp;
 
     mapping(address => uint256) public s_balances;
     mapping(address => uint256) public s_userRewardPerTokenPaid;
@@ -71,9 +73,22 @@ contract Staking is ReentrancyGuard, Ownable {
         uint256 reward = s_rewards[msg.sender];
         if (reward > 0) {
             s_rewards[msg.sender] = 0;
+            s_totalRewardsDistributed += reward;
             require(s_rewardToken.transfer(msg.sender, reward), "Reward claim failed");
             emit RewardClaimed(msg.sender, reward);
         }
+    }
+
+    function totalRewardsDistributed() external view returns (uint256) {
+        return s_totalRewardsDistributed;
+    }
+
+    function totalStaked() external view returns (uint256) {
+        return s_totalSupply;
+    }
+
+    function stakingStartTime() external view returns (uint256) {
+        return s_stakingStartTime;
     }
 
     function rescueTokens(address tokenAddress, uint256 amount) external onlyOwner {
